@@ -9,9 +9,10 @@ public class Main {
         boolean continuarOperacao = true;
         while (continuarOperacao) {
             System.out.printf("================%n" +
-                    "CAIXA ELETRÔNICO%n" +
-                    "================%n" +
-                    "Saldo atual: " + saldo + "%n");
+                            "CAIXA ELETRÔNICO%n" +
+                            "================%n" +
+                            "Saldo atual: R$ %s%n",
+                    saldo.setScale(2, java.math.RoundingMode.HALF_UP));
 
             System.out.printf("Selecione uma opção:%n" +
                     "[1] - Depositar%n" +
@@ -21,7 +22,7 @@ public class Main {
             System.out.print("Escolha: ");
             byte escolhaMenu = scanner.nextByte();
 
-            if (escolhaMenu < 1 || escolhaMenu > 4) {
+            if (escolhaMenu < 1 || escolhaMenu > 3) {
                 System.out.println("Opcção Inválida! Selecione Novamente...");
                 continue;
             }
@@ -46,6 +47,11 @@ public class Main {
                         System.out.println("Saque inválido!");
                         break;
                     }
+                    if (valorSaque.compareTo(saldo) > 0) {
+                        System.out.println("Saldo Insuficiente!");
+                        break;
+                    }
+
                     saldo = saldo.subtract(valorSaque);
                     break;
 
