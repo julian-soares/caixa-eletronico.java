@@ -14,10 +14,9 @@ public class Main {
                     "Saldo atual: " + saldo + "%n");
 
             System.out.printf("Selecione uma opção:%n" +
-                    "[1] - Consultar Saldo%n" +
-                    "[2] - Depositar%n" +
-                    "[3] - Sacar%n" +
-                    "[4] - Sair%n");
+                    "[1] - Depositar%n" +
+                    "[2] - Sacar%n" +
+                    "[3] - Sair%n");
 
             System.out.print("Escolha: ");
             byte escolhaMenu = scanner.nextByte();
@@ -29,30 +28,28 @@ public class Main {
 
             switch (escolhaMenu) {
                 case 1:
-                    System.out.println("Seu saldo é de R$" + saldo);
-                    break;
-
-                case 2:
                     System.out.print("Valor à depositar: ");
                     BigDecimal valorDeposito = scanner.nextBigDecimal();
-                    saldo = saldo.add(valorDeposito);
 
                     if (valorDeposito.compareTo(BigDecimal.ZERO) <= 0) {
                         System.out.println("Depósito inválido!");
+                        break;
                     }
+                    saldo = saldo.add(valorDeposito);
                     break;
 
-                case 3:
+                case 2:
                     System.out.print("Valor à sacar: ");
                     BigDecimal valorSaque = scanner.nextBigDecimal();
-                    saldo = saldo.subtract(valorSaque);
 
                     if (valorSaque.compareTo(BigDecimal.ZERO) <= 0) {
                         System.out.println("Saque inválido!");
+                        break;
                     }
+                    saldo = saldo.subtract(valorSaque);
                     break;
 
-                case 4:
+                case 3:
                     System.out.println("Encerrando...");
                     continuarOperacao = false;
                     break;
