@@ -34,16 +34,28 @@ public class Main {
 
                 case 2:
                     System.out.print("Valor à depositar: ");
-                    BigDecimal valorDepositado = scanner.nextBigDecimal();
-                    saldo = saldo.add(valorDepositado);
+                    BigDecimal valorDeposito = scanner.nextBigDecimal();
+                    saldo = saldo.add(valorDeposito);
 
-                    if (valorDepositado.compareTo(BigDecimal.ZERO)<=0){
+                    if (valorDeposito.compareTo(BigDecimal.ZERO) <= 0) {
                         System.out.println("Depósito inválido!");
-                        break;
                     }
+                    break;
 
                 case 3:
+                    System.out.print("Valor à sacar: ");
+                    BigDecimal valorSaque = scanner.nextBigDecimal();
+                    saldo = saldo.subtract(valorSaque);
 
+                    if (valorSaque.compareTo(BigDecimal.ZERO) <= 0) {
+                        System.out.println("Saque inválido!");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Encerrando...");
+                    continuarOperacao = false;
+                    break;
             }
 
         }
